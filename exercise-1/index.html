@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+    <style>
+
+        body{
+            background-color: rgb(183, 224, 250);
+        }
+
+        h1 {
+	        background: #2980b9;
+	        color: white;
+	        margin: 0;
+	        padding: 10px 20px;
+	        text-transform: uppercase;
+	        font-size: 24px;
+	        font-weight: normal;
+        }
+        
+        ul {
+	        list-style: none;	
+        }
+
+        li {
+            line-height: 40px;
+            font-family: 'Courier New', Courier, monospace;
+            color:#2980b9;
+        }
+
+        input{
+            font-size: 15px;
+            width: 70%;
+            margin:10px 40px;
+            box-sizing: border-box;
+            border: 3px solid #2980b9;
+        }
+
+        #container {
+            width: 360px;
+	        margin: 100px auto;
+	        background: #ddeff5;
+        }
+    
+        #addnew{
+            font-family: 'Courier New', Courier, monospace;
+            background-color: rgba(83, 157, 206, 0.959);
+            border:lightblue;
+            color: white;
+            padding: 5px 20px;
+            margin: 10px 130px;
+        }
+    
+    </style>
+</head>
+
+<body>
+    
+    <div id ="container">
+        <h1>To Do List</h1>
+        
+        <ul>
+            <li v-for="todo in todos" v-text="todo"></li>        
+        </ul>    
+
+        <input id="input" type="text" v-model="newTodo" placeholder="Add a new one">
+        <button @click="addTodo" id="addnew"> Add </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+    <script>
+
+        new Vue({
+            el: '#container',
+            data: {
+                index:0,
+                newTodo: '',
+                todos: ['Learn HTML','Learn CSS','Learn JS','Learn Vuejs'],
+            },
+
+            methods:{
+                addTodo(){
+                    this.todos.push(this.newTodo);
+                    this.newTodo='';
+                }
+            },
+        });
+    </script>
+</body>
+</html>
